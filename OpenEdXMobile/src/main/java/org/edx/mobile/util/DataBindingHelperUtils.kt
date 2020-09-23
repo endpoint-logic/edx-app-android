@@ -61,6 +61,11 @@ class DataBindingHelperUtils {
                 list.forEach { item ->
                     val childView = inflater.inflate(R.layout.sub_item_course_date_block, null)
 
+                    setText(childView.prefix,
+                            if (item.assignmentType.isNullOrBlank()) ""
+                            else String.format("%s:", item.assignmentType))
+                    isViewAccessible(childView.prefix, item.dateBlockBadge)
+
                     setText(childView.title, item.title)
                     isViewAccessible(childView.title, item.dateBlockBadge)
 
